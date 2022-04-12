@@ -45,4 +45,14 @@ router.get('/profile', isUser(), async(req, res) => {
     }
 });
 
+router.get('/profile/:id', async(req, res) => {
+    try{
+        const result = await api.getById(req.params.id);
+        res.status(200).json(result);
+    }catch(err){
+        const error = mapErrors(err);
+        res.status(400).json({message: error});
+    }
+});
+
 module.exports = router;
