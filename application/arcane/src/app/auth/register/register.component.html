@@ -1,0 +1,36 @@
+<div class="position bg-warning">
+<div class="myform">
+  <form (ngSubmit)="submit()" [formGroup]="registerForm">
+    <label for="username">Username</label>
+    <input type="email" class="form-control" id="username" placeholder="Enter username" formControlName="username">
+    <ng-container *ngIf="registerForm.controls['username'].touched">
+      <small *ngIf="registerForm.controls['username'].errors?.['required']">This field is required </small>
+      <small *ngIf="registerForm.controls['username'].errors?.['minlength']">Username should be at least 3 characters long </small>
+    </ng-container>
+
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email"  placeholder="Enter email" formControlName="email">
+    <ng-container *ngIf="registerForm.controls['email'].touched">
+      <small *ngIf="registerForm.controls['email'].errors?.['email']">Email is not valid </small>
+      <small *ngIf="registerForm.controls['email'].errors?.['required']">This field is required </small>
+    </ng-container>
+
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+    <ng-container *ngIf="registerForm.controls['password'].touched">
+      <small *ngIf="registerForm.controls['password'].invalid">This field is required </small>
+    </ng-container>
+
+
+    <label for="rePass">Repeat Password</label>
+    <input type="password" class="form-control" id="rePass" placeholder="Repeat Password" formControlName="rePass">
+    <ng-container *ngIf="registerForm.controls['rePass'].touched">
+      <small *ngIf="registerForm.controls['rePass'].errors?.['required']">This field is required </small>
+      <small *ngIf="registerForm.controls['rePass'].errors?.['confirmedValidator']">The passwords don't match </small>
+    </ng-container>
+
+    <button type="submit" [disabled]="!registerForm.valid"  class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</div>
+

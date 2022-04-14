@@ -1,0 +1,10 @@
+img.card-img-top {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover;
+}
+
+a.nav-link.active {
+  color: #ffc107;
+  font-weight: bold;
+}

@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const DATABASE = `mongodb://127.0.0.1/arcane`;
+// const DATABASE_CLOUD = `mongodb+srv://rtoshkov:%23Sm1l3t1m3@cluster0.463zs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 const cors = require('./middleware/cors.js');
 const attachToken = require('./middleware/attachToken.js');
 

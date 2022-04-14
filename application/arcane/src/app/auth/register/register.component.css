@@ -1,0 +1,24 @@
+div.position {
+  text-align: center;
+  height:100%;
+}
+div.myform {
+  margin:auto;
+  padding: 3em;
+  width: 70%;
+}
+
+button {
+  margin-top: 2em;
+}
+
+small {
+  color: red;
+}
+label{
+  font-size: 1.5em;
+  margin: 0.2em;
+}
+small {
+  display: block;
+}
