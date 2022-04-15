@@ -1,0 +1,20 @@
+<div class="position bg-warning">
+  <div class="myform">
+    <form (ngSubmit)="submit()" [formGroup]="loginForm">
+      <label for="username">Username</label>
+      <input type="email" class="form-control" id="username" placeholder="Enter username" formControlName="username">
+      <ng-container *ngIf="loginForm.controls['username'].touched">
+        <small *ngIf="loginForm.controls['username'].invalid">This field is required </small>
+      </ng-container>
+
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+      <ng-container *ngIf="loginForm.controls['password'].touched">
+        <small *ngIf="loginForm.controls['password'].invalid">This field is required </small>
+      </ng-container>
+
+      <button type="submit" [disabled]="!loginForm.valid"  class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+

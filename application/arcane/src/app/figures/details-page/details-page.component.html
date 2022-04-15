@@ -1,0 +1,74 @@
+<ng-container *ngIf="figure">
+  <div class="row m-0 bg-warning py-5" >
+    <div class="col-md-5" *ngIf="!editMode">
+      <img [attr.src]="figure.image" [attr.alt]="figure.name" class="img-fluid"/>
+    </div>
+    <div class="col-md-5 text-center" *ngIf="!editMode">
+      <h1>{{figure.name}}</h1>
+      <h4 class="text-muted">Owner: {{figure.owner.username}}</h4>
+      <p class="bg-info py-3 px-3">Description: {{figure.description}}</p>
+      <p class="bg-dark text-white py-3 px-3">Resin: {{figure.resin}}</p>
+      <ng-container *ngIf="figure.comments.length > 0">
+        <div class="card-group">
+          <app-comment [figure]="figure"></app-comment>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="user?._id == figure?.owner._id">
+        <button class="btn btn-primary" (click)="editModeSwitch(true)">Enable EditMode</button>
+        <button class="btn btn-danger" (click)="delete()">Delete</button>
+      </ng-container>
+    </div>
+
+
+
+  <div class="col-md-12 text-center" *ngIf="editMode">
+    <div class="position bg-warning">
+      <div class="myform">
+        <form (ngSubmit)="submitEdit()" [formGroup]="editForm">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name">
+          <ng-container *ngIf="editForm.controls['name'].touched">
+            <small *ngIf="editForm.controls['name'].errors?.['required']">This field is required </small>
+            <small *ngIf="editForm.controls['name'].errors?.['minlength']">The name should be at least 3 characters
+              long </small>
+          </ng-container>
+          <label for="image">Link to image</label>
+          <input type="text" class="form-control" id="image" placeholder="Link to image" formControlName="image">
+          <ng-container *ngIf="editForm.controls['image'].touched">
+            <small *ngIf="editForm.controls['image'].errors?.['required']">This field is required </small>
+            <small *ngIf="editForm.controls['image'].errors?.['pattern']">The link should start with http:// or
+              https:// </small>
+          </ng-container>
+          <label for="resin">Resin</label>
+          <input type="text" class="form-control" id="resin" placeholder="Enter name" formControlName="resin">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" placeholder="Enter description"
+                 formControlName="description">
+          <ng-container *ngIf="editForm.controls['description'].touched">
+            <small *ngIf="editForm.controls['description'].errors?.['required']">This field is required </small>
+            <small *ngIf="editForm.controls['description'].errors?.['minlength']">The description should be at least 10
+              characters long </small>
+          </ng-container>
+          <button class="btn btn-danger me-1 " (click)="editModeSwitch(false)">Cancel</button>
+          <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <ng-container *ngIf="user && !editMode">
+  <div class="col-md-4 text-center">
+    <form (ngSubmit)="submitComment()" #commentForm ="ngForm">
+      <label>Comment:</label>
+      <input type="text" class="form-control" #comment = "ngModel" placeholder="Enter comment" name="text" ngModel required>
+      <ng-container *ngIf="comment.touched && comment.invalid" >
+        <small>This field is required </small>
+      </ng-container>
+      <button type="submit" [disabled]="!commentForm.valid" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+    </ng-container>
+  </div>
+</ng-container>
