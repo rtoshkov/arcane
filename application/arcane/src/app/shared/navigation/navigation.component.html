@@ -25,9 +25,9 @@
           </li>
         </ng-container>
         <ng-container *ngIf="isLogged">
-          <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="'active'" routerLink="/profile">Profile</a>
-          </li>
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" [routerLinkActive]="'active'" routerLink="/profile">Profile</a>-->
+<!--          </li>-->
           <li class="nav-item">
             <a class="nav-link" [routerLinkActive]="'active'" routerLink="/create-figure">Create</a>
           </li>
@@ -39,3 +39,8 @@
     </div>
   </div>
 </nav>
+<ng-container *ngIf="!!alert">
+  <div class="alert alert-danger text-center" role="alert">
+    {{alert}}
+  </div>
+</ng-container>

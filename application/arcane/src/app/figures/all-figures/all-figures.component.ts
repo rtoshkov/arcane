@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FiguresService} from "../../api/figures.service";
+import {IFigure} from "../../interfaces/figure";
 
 @Component({
   selector: 'app-all-figures',
@@ -7,8 +8,10 @@ import {FiguresService} from "../../api/figures.service";
   styleUrls: ['./all-figures.component.css']
 })
 export class AllFiguresComponent implements OnInit {
-  cards!: any[];
-  constructor(private api: FiguresService) { }
+  cards!: IFigure[];
+  constructor(
+    private api: FiguresService
+  ){}
 
   ngOnInit(): void {
     this.api.getAllPosts$().subscribe(data => {this.cards = (data)})

@@ -6,6 +6,7 @@ import { CardComponent } from './card/card.component';
 import {RouterModule} from "@angular/router";
 import { CommentComponent } from './comment/comment.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TextLimiterPipe } from './text-limiter.pipe';
 
 
 
@@ -15,7 +16,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent,
     CardComponent,
     CommentComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TextLimiterPipe
   ],
   imports: [
     CommonModule,

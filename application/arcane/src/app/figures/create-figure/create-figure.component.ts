@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FiguresService} from "../../api/figures.service";
 import {Router} from "@angular/router";
+import {NotificationService} from "../../notification.service";
 
 @Component({
   selector: 'app-create-figure',
@@ -10,7 +11,13 @@ import {Router} from "@angular/router";
 })
 export class CreateFigureComponent implements OnInit {
   createForm!: FormGroup;
-  constructor(private fb : FormBuilder, private api: FiguresService, private router: Router) { }
+
+  constructor(
+    private fb : FormBuilder,
+    private api: FiguresService,
+    private router: Router,
+    private notificationService: NotificationService,
+  ) { }
 
   ngOnInit(): void {
     this.createForm = this.fb.group({
@@ -33,8 +40,7 @@ export class CreateFigureComponent implements OnInit {
       next: data => {
         this.router.navigate([`/details/${data._id}`])
       },
-      error: err => {console.log(err.error?.message)}
+      error: err => {this.notificationService.sendAlert(err.error?.message)}
     })
   }
-
 }

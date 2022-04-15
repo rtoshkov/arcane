@@ -7,8 +7,11 @@ import {UserService} from "../user.service";
   providedIn: 'root'
 })
 export class IsUserGuard implements CanActivate {
-  constructor(private userService: UserService, private router:Router) {
-  }
+  constructor(
+    private userService: UserService,
+    private router:Router
+  ){}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

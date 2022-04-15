@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../../user.service";
 import {IUser} from "../../interfaces/user";
+import {NotificationService} from "../../notification.service";
 
 @Component({
   selector: 'app-navigation',
@@ -8,10 +9,16 @@ import {IUser} from "../../interfaces/user";
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit{
-  isLogged!: any
-  constructor(private userService: UserService) { }
+  isLogged!: boolean;
+  alert!: string | undefined
+
+  constructor(
+    private userService: UserService,
+    private notificationService: NotificationService,
+  ){}
 
   ngOnInit(): void {
     this.userService.currentUser.subscribe((data) => {this.isLogged = !!data});
+    this.notificationService.notification.subscribe((data) => {this.alert = data});
   }
 }
