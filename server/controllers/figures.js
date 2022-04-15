@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
 
 });
 
-router.put('/:id', isUser(), async (req, res) => {
+router.post('/:id', isUser(), async (req, res) => {
     const figure = {
         name: req.body.name,
         image: req.body.image,

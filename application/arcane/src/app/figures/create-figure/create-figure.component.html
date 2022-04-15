@@ -1,0 +1,33 @@
+<div class="position bg-warning">
+  <div class="myform">
+    <form (ngSubmit)="submit()" [formGroup]="createForm">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name">
+      <ng-container *ngIf="createForm.controls['name'].touched">
+        <small *ngIf="createForm.controls['name'].errors?.['required']">This field is required </small>
+        <small *ngIf="createForm.controls['name'].errors?.['minlength']">The name should be at least 3 characters long </small>
+      </ng-container>
+
+
+      <label for="image">Link to image</label>
+      <input type="text" class="form-control" id="image" placeholder="Link to image" formControlName="image">
+      <ng-container *ngIf="createForm.controls['image'].touched">
+        <small *ngIf="createForm.controls['image'].errors?.['required']">This field is required </small>
+        <small *ngIf="createForm.controls['image'].errors?.['pattern']">The link should start with http:// or https:// </small>
+      </ng-container>
+
+      <label for="resin">Resin</label>
+      <input type="text" class="form-control" id="resin" placeholder="Enter name" formControlName="resin">
+
+      <label for="description">Description</label>
+      <input type="text" class="form-control" id="description" placeholder="Enter description" formControlName="description">
+      <ng-container *ngIf="createForm.controls['description'].touched">
+        <small *ngIf="createForm.controls['description'].errors?.['required']">This field is required </small>
+        <small *ngIf="createForm.controls['description'].errors?.['minlength']">The description should be at least 10 characters long </small>
+      </ng-container>
+
+      <button type="submit" [disabled]="!createForm.valid"  class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+

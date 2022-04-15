@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SharedModule} from "./shared/shared.module";
 import {HomePageModule} from "./home-page/home-page.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FiguresModule} from "./figures/figures.module";
 import {AuthModule} from "./auth/auth.module";
+import {AttachHeadersInterceptor} from "./middleware/attach-headers.interceptor";
+import {RemoveInvalidTokenInterceptor} from "./middleware/remove-invalid-token.interceptor";
 
 
 @NgModule({
@@ -23,7 +25,18 @@ import {AuthModule} from "./auth/auth.module";
     FiguresModule,
     AuthModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AttachHeadersInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RemoveInvalidTokenInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,6 +11,6 @@ export class AllFiguresComponent implements OnInit {
   constructor(private api: FiguresService) { }
 
   ngOnInit(): void {
-    this.api.getAllPosts().subscribe(data => {this.cards = (data)})
+    this.api.getAllPosts$().subscribe(data => {this.cards = (data)})
   }
 }

@@ -11,6 +11,6 @@ export class HomeComponent implements OnInit {
   constructor(private api: FiguresService) { }
 
   ngOnInit(): void {
-    this.api.getAllPosts().subscribe(data => {this.cards = (data).slice(-4)})
+    this.api.getAllPosts$().subscribe(data => {this.cards = (data).slice(-4)})
   }
 }

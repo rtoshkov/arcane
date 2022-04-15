@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms'
 import {AuthenticationService} from "../../api/authentication.service";
+import {UserService} from "../../user.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -10,7 +12,7 @@ import {AuthenticationService} from "../../api/authentication.service";
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
-  constructor( private fb : FormBuilder, private api: AuthenticationService ) { }
+  constructor( private fb : FormBuilder, private api: AuthenticationService, private userService: UserService, private router: Router ) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -28,8 +30,11 @@ export class RegisterComponent implements OnInit {
       password: this.registerForm.value.password,
     }
 
-    this.api.register(data).subscribe({
-      next: data => {console.log(data)},
+    this.api.register$(data).subscribe({
+      next: data => {
+        this.userService.saveUserData(data);
+        this.router.navigate(['/home']);
+      },
       error: err => {console.log(err.error?.message)}
     })
   }

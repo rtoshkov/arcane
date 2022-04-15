@@ -4,6 +4,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardComponent } from './card/card.component';
 import {RouterModule} from "@angular/router";
+import { CommentComponent } from './comment/comment.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -11,7 +13,9 @@ import {RouterModule} from "@angular/router";
   declarations: [
     NavigationComponent,
     FooterComponent,
-    CardComponent
+    CardComponent,
+    CommentComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +25,7 @@ import {RouterModule} from "@angular/router";
     NavigationComponent,
     FooterComponent,
     CardComponent,
+    CommentComponent,
   ]
 })
 export class SharedModule { }
