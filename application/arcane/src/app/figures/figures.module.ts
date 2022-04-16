@@ -5,6 +5,7 @@ import {SharedModule} from "../shared/shared.module";
 import { CreateFigureComponent } from './create-figure/create-figure.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -14,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AllFiguresComponent,
     CreateFigureComponent,
     DetailsPageComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {IUser} from "../interfaces/user";
 import {ILogin} from "../interfaces/login";
+import {IProfile} from "../interfaces/profile";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,11 @@ export class AuthenticationService {
     const url = 'http://127.0.0.1:3030/users/logout'
     this.http.get(url);
     return;
+  }
+
+  userFigures$(id: string): Observable<IProfile>{
+    const url = `http://127.0.0.1:3030/users/profile/${id}`
+    return this.http.get<IProfile>(url);
   }
 }
 

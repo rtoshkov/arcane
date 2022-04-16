@@ -9,6 +9,7 @@ import {DetailsPageComponent} from "./figures/details-page/details-page.componen
 import {NotFoundComponent} from "./shared/not-found/not-found.component";
 import {LogoutComponent} from "./auth/logout/logout.component";
 import {IsUserGuard} from "./middleware/is-user.guard";
+import {ProfileComponent} from "./figures/profile/profile.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'auth/login', component: LoginComponent},
   {path: 'auth/register', component: RegisterComponent},
   {path: 'auth/logout', component: LogoutComponent},
+  {path: 'profile/:id', component: ProfileComponent},
   {path: 'all-figures', component: AllFiguresComponent},
   {path: 'create-figure', component: CreateFigureComponent, canActivate:[IsUserGuard]},
   {path: 'details/:id', component: DetailsPageComponent},

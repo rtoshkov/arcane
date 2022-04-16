@@ -9,7 +9,7 @@ import {NotificationService} from "../../notification.service";
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit{
-  isLogged!: boolean;
+  isUser!: IUser | undefined;
   alert!: string | undefined
 
   constructor(
@@ -18,7 +18,7 @@ export class NavigationComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.userService.currentUser.subscribe((data) => {this.isLogged = !!data});
+    this.userService.currentUser.subscribe((data) => {this.isUser = data});
     this.notificationService.notification.subscribe((data) => {this.alert = data});
   }
 }

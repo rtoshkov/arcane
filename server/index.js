@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const DATABASE = `mongodb://127.0.0.1/arcane`;
 const cors = require('./middleware/cors.js');
 const attachToken = require('./middleware/attachToken.js');
-
 const figuresController = require('./controllers/figures.js');
 const usersController = require('./controllers/users.js');
 

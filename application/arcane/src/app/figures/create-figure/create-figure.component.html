@@ -20,7 +20,7 @@
       <input type="text" class="form-control" id="resin" placeholder="Enter name" formControlName="resin">
 
       <label for="description">Description</label>
-      <input type="text" class="form-control" id="description" placeholder="Enter description" formControlName="description">
+      <textarea class="form-control" id="description" placeholder="Enter description" formControlName="description"></textarea>
       <ng-container *ngIf="createForm.controls['description'].touched">
         <small *ngIf="createForm.controls['description'].errors?.['required']">This field is required </small>
         <small *ngIf="createForm.controls['description'].errors?.['minlength']">The description should be at least 10 characters long </small>

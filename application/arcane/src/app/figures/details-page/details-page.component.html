@@ -42,8 +42,8 @@
           <label for="resin">Resin</label>
           <input type="text" class="form-control" id="resin" placeholder="Enter name" formControlName="resin">
           <label for="description">Description</label>
-          <input type="text" class="form-control" id="description" placeholder="Enter description"
-                 formControlName="description">
+          <textarea class="form-control" id="description" placeholder="Enter description"
+                    formControlName="description"></textarea>
           <ng-container *ngIf="editForm.controls['description'].touched">
             <small *ngIf="editForm.controls['description'].errors?.['required']">This field is required </small>
             <small *ngIf="editForm.controls['description'].errors?.['minlength']">The description should be at least 10
@@ -61,7 +61,7 @@
   <div class="col-md-4 text-center">
     <form (ngSubmit)="submitComment()" #commentForm ="ngForm">
       <label>Comment:</label>
-      <input type="text" class="form-control" #comment = "ngModel" placeholder="Enter comment" name="text" ngModel required>
+      <textarea class="form-control" #comment = "ngModel" placeholder="Enter comment" name="text" ngModel required></textarea>
       <ng-container *ngIf="comment.touched && comment.invalid" >
         <small>This field is required </small>
       </ng-container>

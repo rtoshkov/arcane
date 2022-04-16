@@ -1,0 +1,10 @@
+<div class="card-group">
+<ng-container *ngIf="profile?.figurines">
+  <app-card [cards]="profile.figurines" *ngIf="profile.figurines.length > 0; else nocards"></app-card>
+</ng-container>
+
+  <ng-template #nocards>
+    <h1>No cards</h1>
+  </ng-template>
+
+</div>
